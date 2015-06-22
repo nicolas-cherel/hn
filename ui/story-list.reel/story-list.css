@@ -27,7 +27,7 @@
     font-weight: lighter;
     width: 75px;
     text-align: right;
-    opacity: 0.33;
+    opacity: 1;
 }
 
 .StoryList .story-entry .title {

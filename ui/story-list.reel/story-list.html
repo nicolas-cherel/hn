@@ -10,19 +10,29 @@
                 "element": {"#": "owner"}
             }
         },
-        "rep": {
-            "prototype": "montage/ui/repetition.reel",
+        "comments-count": {
+            "prototype": "montage/ui/text.reel",
             "properties": {
-                "element": { "#": "items" }
+                "element": {"#": "comments-count"}
             },
             "bindings": {
-                "content": { "<-": "@owner.subs" }
+                "value": {"<-": "@rep:iteration.object.descendants"}
+            }
+        },
+        "comments-link": {
+            "prototype": "ui/link.reel",
+            "properties": {
+                "element": {"#": "comments-link"},
+                "urlConverter": {"@": "url-item-id-converter"}
+            },
+            "bindings": {
+                "url": {"<-": "@rep:iteration.object.id"}
             }
         },
         "item": {
             "prototype": "montage/ui/text.reel",
             "properties": {
-                "element": { "#": "title" }
+                "element": {"#": "title"}
             },
             "bindings": {
                 "value": {"<-": "@rep:iteration.object.title"}
@@ -35,13 +45,60 @@
                 "identifier": "story-more-link"
             }
         },
+        "rep": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "items"}
+            },
+            "bindings": {
+                "content": {"<-": "@owner.subs"}
+            }
+        },
+        "score": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "score"}
+            },
+            "bindings": {
+                "value": {"<-": "@rep:iteration.object.score"}
+            }
+        },
         "story-link": {
             "prototype": "ui/link.reel",
             "properties": {
-                "element": { "#": "story-link" }
+                "element": {"#": "story-link"}
             },
             "bindings": {
-                "url":   {"<-": "@rep:iteration.object.url"}
+                "url": {"<-": "@rep:iteration.object.url"}
+            }
+        },
+        "submitter": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "submitter"}
+            },
+            "bindings": {
+                "value": {"<-": "@rep:iteration.object.by"}
+            }
+        },
+        "submitter-link": {
+            "prototype": "ui/link.reel",
+            "properties": {
+                "element": {"#": "submitter-link"},
+                "urlConverter": {"@": "url-user-id-converter"}
+            },
+            "bindings": {
+                "url": {"<-": "@rep:iteration.object.by"}
+            }
+        },
+        "time": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "time"}
+            },
+            "bindings": {
+                "converter": {"<-": "@owner.time_ago_converter"},
+                "value": {"<-": "@rep:iteration.object.time"}
             }
         },
         "url-item-id-converter": {
@@ -49,63 +106,6 @@
         },
         "url-user-id-converter": {
             "prototype": "lib/hn-user-url-converter"
-        },
-        "comments-link": {
-            "prototype": "ui/link.reel",
-            "properties": {
-                "element": {"#": "comments-link"},
-                "urlConverter": { "@": "url-item-id-converter" }
-            },
-            "bindings": {
-                "url": {"<-": "@rep:iteration.object.id"}
-            }
-        },
-        "submitter-link": {
-            "prototype": "ui/link.reel",
-            "properties": {
-                "element": {"#": "submitter-link"},
-                "urlConverter": { "@": "url-user-id-converter" }
-            },
-            "bindings": {
-                "url": {"<-": "@rep:iteration.object.by"}
-            }
-        },
-        "score": {
-            "prototype": "montage/ui/text.reel",
-            "properties": {
-                "element": { "#": "score" }
-            },
-            "bindings": {
-                "value": {"<-": "@rep:iteration.object.score"}
-            }
-        },
-        "submitter": {
-            "prototype": "montage/ui/text.reel",
-            "properties": {
-                "element": { "#": "submitter" }
-            },
-            "bindings": {
-                "value": {"<-": "@rep:iteration.object.by"}
-            }
-        },
-        "time": {
-            "prototype": "montage/ui/text.reel",
-            "properties": {
-                "element": { "#": "time" }
-            },
-            "bindings": {
-                "value": {"<-": "@rep:iteration.object.time"},
-                "converter": {"<-": "@owner.time_ago_converter"}
-            }
-        },
-        "comments-count": {
-            "prototype": "montage/ui/text.reel",
-            "properties": {
-                "element": { "#": "comments-count" }
-            },
-            "bindings": {
-                "value": {"<-": "@rep:iteration.object.descendants"}
-            }
         }
     }
     </script>
@@ -115,24 +115,36 @@
         <ul data-montage-id="items">
             <li class="story-entry">
                 <div class="story-main">
-                    <span class="score"         data-montage-id="score"></span>
-                    <a target="_new" data-montage-id="story-link"><span class="title"         data-montage-id="title"></span></a>
-                    
+                    <span class="score" data-montage-id="score"></span>
+                    <a target="_new" data-montage-id="story-link">
+                        <span class="title" data-montage-id="title"></span>
+                    </a>
                 </div>
-                <div class="story-details">                    
+                <div class="story-details">
                     <span class="submitter">
                         <a class="submitter-link" data-montage-id="submitter-link">
-                            by <span data-montage-id="submitter"></span>
+                            by
+                            <span data-montage-id="submitter"></span>
                         </a>
                     </span>
                     —
-                    <span class="time"><span data-montage-id="time"></span> ago</span>
+                    <span class="time">
+                        <span data-montage-id="time"></span>
+                        ago
+                    </span>
                     —
-                    <a class="comments-link" data-montage-id="comments-link"><span class="comments-count"><span data-montage-id="comments-count"></span> comments</span></a>
+                    <a class="comments-link" data-montage-id="comments-link">
+                        <span class="comments-count">
+                            <span data-montage-id="comments-count"></span>
+                            comments
+                        </span>
+                    </a>
                 </div>
             </li>
         </ul>
-        <a data-montage-id="more-link" class="load-more">more…</a>
+        <a data-montage-id="more-link" class="load-more">
+            more…
+        </a>
     </div>
 </body>
 </html>
