@@ -1,0 +1,1 @@
+montageDefine("fbef3d3","ui/link.reel/link.html",{text:'<!DOCTYPE html><html><head>\n    <title></title>\n    <link rel=stylesheet type=text/css href=link.css>\n    <script type=text/montage-serialization>{"owner":{"prototype":"ui/link.reel"}}</script>\n</head>\n<body>\n    <span data-arg=*></span>\n\n\n</body></html>'});

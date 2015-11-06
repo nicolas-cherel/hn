@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head>
+    <meta http-equiv=Content-type content="text/html; charset=utf-8">
+    <title>WebSocket test</title>
+  </head>
+  <body>
+
+    <h1>WebSocket test</h1>
+    <ul></ul>
+
+    <script>var logger=document.getElementsByTagName("ul")[0],Socket=window.MozWebSocket||window.WebSocket,protos=["foo","bar","xmpp"],socket=new Socket("ws://"+location.hostname+":"+location.port+"/",protos),index=0,log=function(e){logger.innerHTML+="<li>"+e+"</li>"};socket.addEventListener("open",function(){log("OPEN: "+socket.protocol),socket.send("Hello, world")}),socket.onerror=function(e){log("ERROR: "+e.message)},socket.onmessage=function(e){log("MESSAGE: "+e.data),setTimeout(function(){socket.send(++index+" "+e.data)},2e3)},socket.onclose=function(e){log("CLOSE: "+e.code+", "+e.reason)};</script>
+
+  
+
+</body></html>

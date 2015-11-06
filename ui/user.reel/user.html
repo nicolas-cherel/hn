@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="user.css" />
+    <script type="text/montage-serialization">{"owner":{"properties":{"element":{"#":"owner"}}},"time-converter":{"prototype":"lib/time-ago-converter"},"rep":{"prototype":"montage/ui/repetition.reel","properties":{"element":{"#":"items"}},"bindings":{"content":{"<-":"@owner.submissions"}}},"type-substitution":{"prototype":"montage/ui/substitution.reel","properties":{"element":{"#":"type-substitution"}},"bindings":{"switchValue":{"<-":"@rep:iteration.object.type"}}},"item":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"item"}},"bindings":{"value":{"<-":"@rep:iteration.object.title"}}},"link":{"prototype":"ui/link.reel","properties":{"element":{"#":"sub-link"}},"bindings":{"url":{"<-":"@rep:iteration.object.url"}}},"submission-link":{"prototype":"ui/link.reel","properties":{"element":{"#":"submission-link"},"urlConverter":{"@":"url-item-id-converter"}},"bindings":{"url":{"<-":"@rep:iteration.object.id"}}},"url-item-id-converter":{"prototype":"lib/hn-item-url-converter"},"user-id":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"user-id"}},"bindings":{"value":{"<-":"@owner.user.id"}}},"karma":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"karma"}},"bindings":{"value":{"<-":"@owner.user.karma"}}},"created-at":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"created-at"},"converter":{"@":"time-converter"}},"bindings":{"value":{"<-":"@owner.user.created"}}},"submission-time":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"submission-time"},"converter":{"@":"time-converter"}},"bindings":{"value":{"<-":"@rep:iteration.object.time"}}},"comment-time":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"comment-time"},"converter":{"@":"time-converter"}},"bindings":{"value":{"<-":"@rep:iteration.object.time"}}},"score":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"score"}},"bindings":{"value":{"<-":"@rep:iteration.object.score"}}},"replies-count":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"replies-count"}},"bindings":{"value":{"<-":"@rep:iteration.object.kids.length"}}},"replies-condition":{"prototype":"montage/ui/condition.reel","properties":{"element":{"#":"replies-condition"}},"bindings":{"condition":{"<-":"@rep:iteration.object.kids"}}},"about":{"prototype":"ui/raw-html.reel","properties":{"element":{"#":"about"}},"bindings":{"value":{"<-":"@owner.user.about"}}},"comment-text":{"prototype":"ui/raw-html.reel","properties":{"element":{"#":"comment-text"}},"bindings":{"value":{"<-":"@rep:iteration.object.text"}}},"comment-parent-link":{"prototype":"ui/link.reel","properties":{"element":{"#":"comment-parent-link"},"urlConverter":{"@":"url-item-id-converter"}},"bindings":{"url":{"<-":"@rep:iteration.object.parent"}}}}</script>
+</head>
+<body>
+    <div data-montage-id="owner" class="User">
+        <h2 data-montage-id="user-id"></h2>
+        <div class="info">karma <span data-montage-id="karma"></span></div>
+        <div class="info">user since <span data-montage-id="created-at"></span></div>
+        <p class="about" data-montage-id="about"></p>
+        <div data-montage-id="items">
+            <div class="submission">
+                <div data-montage-id="type-substitution">
+                    <div data-arg="story" class="submission-story">
+                        <div data-montage-id="score" class="score"></div>
+                        <div class="details">
+                            <div><a data-montage-id="sub-link" target="_new"><span data-montage-id="item"></span></a></div>
+                            <div class="submission-info"><a data-montage-id="submission-link"><span data-montage-id="submission-time"></span> ago</a></div>
+                        </div>
+                    </div>
+                    <div data-arg="comment" class="submision-comment">
+                        <div class="comment-glyph"></div>
+                        <div class="details">
+                            <div class="comment-text"><div data-montage-id="comment-text"></div></div>
+                            <div class="submission-info">
+                            </div>
+                                <a data-montage-id="comment-parent-link"><span data-montage-id="comment-time"></span> ago 
+                                <span data-montage-id="replies-condition"> - <span data-montage-id="replies-count"></span> replies</span></a></div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    
+
+
+</body></html>

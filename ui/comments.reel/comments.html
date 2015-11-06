@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="comments.css" />
+    <script type="text/montage-serialization">{"owner":{"properties":{"element":{"#":"owner"},"controller":{"@":"treeController"}}},"treeController":{"prototype":"montage/core/tree-controller","properties":{"initiallyExpanded":true},"bindings":{"content":{"<-":"@owner.story"}}},"repetition":{"prototype":"montage/ui/repetition.reel","properties":{"element":{"#":"repetition"},"contentController":{"@":"repetitionController"}}},"repetitionController":{"prototype":"montage/core/range-controller","bindings":{"content":{"<-":"@owner.controller.iterations"}}},"indentRepeater":{"prototype":"montage/ui/repetition.reel","properties":{"element":{"#":"indent"}},"bindings":{"content":{"<-":"@repetition:iteration.object.content.depth_helper"}}},"comment-ui-substitution":{"prototype":"montage/ui/substitution.reel","properties":{"element":{"#":"comment-ui-substitution"}},"bindings":{"switchValue":{"<-":"@repetition:iteration.object.content.nodeType"}}},"comment-raw":{"prototype":"ui/raw-html.reel","properties":{"element":{"#":"comment-raw"}},"bindings":{"value":{"<-":"@repetition:iteration.object.content.content.text"}}},"url-user-id-converter":{"prototype":"lib/hn-user-url-converter"},"url-item-id-converter":{"prototype":"lib/hn-item-url-converter"},"more-comments":{"prototype":"ui/link.reel","properties":{"element":{"#":"more-comments"}},"bindings":{"nodeData":{"<-":"@repetition:iteration.object.content"}}},"more-replies":{"prototype":"ui/link.reel","properties":{"element":{"#":"more-replies"}},"bindings":{"nodeData":{"<-":"@repetition:iteration.object.content"}}},"author-link":{"prototype":"ui/link.reel","properties":{"element":{"#":"author-link"},"urlConverter":{"@":"url-user-id-converter"}},"bindings":{"url":{"<-":"@repetition:iteration.object.content.content.by"}}},"comment-link":{"prototype":"ui/link.reel","properties":{"element":{"#":"comment-link"},"urlConverter":{"@":"url-item-id-converter"}},"bindings":{"url":{"<-":"@repetition:iteration.object.content.content.id"}}},"author":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"author"}},"bindings":{"value":{"<-":"@repetition:iteration.object.content.content.by"}}},"time":{"prototype":"montage/ui/text.reel","properties":{"element":{"#":"time"}},"bindings":{"value":{"<-":"@repetition:iteration.object.content.content.time"},"converter":{"<-":"@owner.time_ago_converter"}}}}</script>
+</head>
+<body>
+    <div data-montage-id="owner" class="Comments">
+        <div data-montage-id="repetition" class="Tree-repetition">
+                <div class="comment">
+                    <div data-montage-id="indent" class="indent">
+                        <div class="indenter"></div>
+                    </div>
+                    <div data-montage-id="comment-ui-substitution" class="comment-ui-entry">
+                        <div data-arg="comment" class="comment-content">
+                            <div class="info-line">
+                                <a data-montage-id="author-link"><span data-montage-id="author"></span></a>
+                                 — 
+                                <a data-montage-id="comment-link"><span data-montage-id="time"></span> ago</a>
+                            </div>
+                            <div data-montage-id="comment-raw"></div>
+                        </div>
+                        <div data-arg="more-next-placeholder">
+                            <a data-montage-id="more-comments" class="load-more">+ more comments…</a>
+                        </div>
+                        <div data-arg="more-replies-placeholder">
+                            <a data-montage-id="more-replies" class="load-more">+ more replies…</a>
+                        </div>
+                        <div data-arg="story">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+</body></html>

@@ -1,0 +1,1 @@
+montageDefine("27d7390","examples/proxy_server",{dependencies:["../spec/proxy_server"],factory:function(e){var t=e("../spec/proxy_server"),n=process.argv[2],i="tls"===process.argv[3],r=new t({debug:!0,tls:i});r.listen(n)}});

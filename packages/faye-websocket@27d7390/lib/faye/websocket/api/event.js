@@ -1,0 +1,1 @@
+var Event=function(e,t){this.type=e;for(var n in t)this[n]=t[n]};Event.prototype.initEvent=function(e,t,n){this.type=e,this.bubbles=t,this.cancelable=n},Event.prototype.stopPropagation=function(){},Event.prototype.preventDefault=function(){},Event.CAPTURING_PHASE=1,Event.AT_TARGET=2,Event.BUBBLING_PHASE=3,module.exports=Event;
