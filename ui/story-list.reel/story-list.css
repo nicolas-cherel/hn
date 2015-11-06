@@ -44,3 +44,7 @@
     font-size: .8rem;
     opacity: 0.25;
 }
+
+.StoryList .load-more {
+    margin-left: 75px;
+}

@@ -40,7 +40,7 @@ var fetchKids = function(node, offset, count, depth) {
     });
     if (kids && (kids.length - uOffset) > uCount) {
         allWait.push(new Promise(function(resolve, reject) {
-            resolve(new Node({parent: node}, null, node.depth, "more-placeholder"));
+            resolve(new Node({parent: node}, null, node.depth, "more-next-placeholder"));
         }));
     }
     
@@ -51,7 +51,7 @@ var fetchKids = function(node, offset, count, depth) {
                     return fetchKids(n, 0, null, depth);
                 } else {
                     return new Promise(function(resolve, reject) {
-                        n.children.push(new Node({parent: n}, null, n.depth, "more-placeholder"));
+                        n.children.push(new Node({parent: n}, null, n.depth, "more-replies-placeholder"));
                         resolve();
                     });
                 }

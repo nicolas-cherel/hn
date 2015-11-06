@@ -68,10 +68,19 @@
         "url-item-id-converter": {
             "prototype": "lib/hn-item-url-converter"
         },
-        "more-link": {
+        "more-comments": {
             "prototype": "ui/link.reel",
             "properties": {
-                "element": {"#": "more-link"}
+                "element": {"#": "more-comments"}
+            },
+            "bindings": {
+                "nodeData": {"<-": "@repetition:iteration.object.content"}
+            }
+        },
+        "more-replies": {
+            "prototype": "ui/link.reel",
+            "properties": {
+                "element": {"#": "more-replies"}
             },
             "bindings": {
                 "nodeData": {"<-": "@repetition:iteration.object.content"}
@@ -135,8 +144,11 @@
                             </div>
                             <div data-montage-id="comment-raw"></div>
                         </div>
-                        <div data-arg="more-placeholder">
-                            <a data-montage-id="more-link" class="load-more">more…</a>
+                        <div data-arg="more-next-placeholder">
+                            <a data-montage-id="more-comments" class="load-more">+ more comments…</a>
+                        </div>
+                        <div data-arg="more-replies-placeholder">
+                            <a data-montage-id="more-replies" class="load-more">+ more replies…</a>
                         </div>
                         <div data-arg="story">
                             <!-- story -->
